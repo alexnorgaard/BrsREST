@@ -24,4 +24,10 @@ public class VehicleRestService {
     public Response compartmentItems(@PathParam("vehicleNum") int vehicleId, @PathParam("compartmentId") int compartmentId){
         return Response.status(200).entity("CompartmentId: " + compartmentId + " in vehicle: " + vehicleId + " has the following loose items: XYZ").build();
     }
+
+    @GET
+    @Path("/{vehicleNum}/compartment/{compartmentId}/shelves") //For showing list of shelves in a specific compartment of a chosen vehicle
+    public Response compartmentShelves(@PathParam("vehicleNum") int vehicleId, @PathParam("compartmentId") int compartmentId){
+        return Response.status(200).entity("CompartmentId: " + compartmentId + " in vehicle: " + vehicleId + " has the following shelves: ÆØÅ").build();
+    }
 }
