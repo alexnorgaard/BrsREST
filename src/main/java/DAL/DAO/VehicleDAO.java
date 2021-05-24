@@ -50,7 +50,7 @@ public class VehicleDAO implements IVehicleDAO {
     IVehicleDTO vehicle = new VehicleDTO();
 
     try (Connection c = createConnection()){
-     
+
       Statement st = c.createStatement();
       ResultSet rs = st.executeQuery("SELECT * FROM vehicles WHERE license = " + vehicleId);
       rs.next();
