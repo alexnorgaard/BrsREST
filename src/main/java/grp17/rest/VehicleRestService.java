@@ -1,5 +1,12 @@
 package grp17.rest;
 
+import DAL.DAO.IItemDAO;
+import DAL.DAO.IVehicleDAO;
+import DAL.DAO.VehicleDAO;
+import DAL.IVehicleDTO;
+import DAL.VehicleDTO;
+import com.google.gson.Gson;
+
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
@@ -7,7 +14,24 @@ import javax.ws.rs.core.Response;
 
 @Path("/vehicles")
 public class VehicleRestService {
+    IVehicleDAO vehicleDAO = new VehicleDAO();
+    IVehicleDTO vehicleDTO;
+    Gson gson = new Gson();
+
     @GET // This annotation indicates GET request
+    @Path("/{vehicleNum}") //Show data on chosen vehicle
+    public Response vehicleInfo(@PathParam("vehicleNum") int id) throws IVehicleDAO.DALException {
+
+       vehicleDTO = vehicleDAO.getVehicle(id);
+        System.out.println(vehicleDTO.getVehiclePurpose());
+        System.out.println(vehicleDTO.getVehicleId());
+        System.out.println(vehicleDTO.getLicense());
+       String str = gson.toJson(vehicleDTO);
+        System.out.println(str);
+        return Response.status(200).entity("values: " + str).build();
+    }
+
+    @GET
     @Path("/{vehicleNum}/compartments") //For showing all compartments of a chosen vehicle
     public Response compartments(@PathParam("vehicleNum") int id) {
         return Response.status(200).entity("Vehicle NUM: " + id).build();

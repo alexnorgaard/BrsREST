@@ -1,7 +1,13 @@
 <component name="ArtifactManager">
   <artifact type="war" name="BrsREST:war">
-    <output-path>$PROJECT_DIR$/out/artifacts/BrsREST_war</output-path>
-    <root id="archive" name="BrsREST_war.war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>BrsREST</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="BrsREST-1.0-SNAPSHOT.war">
       <element id="artifact" artifact-name="BrsREST:war exploded" />
     </root>
   </artifact>
