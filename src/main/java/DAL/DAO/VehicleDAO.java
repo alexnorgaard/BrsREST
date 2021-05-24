@@ -9,17 +9,14 @@ import java.util.LinkedList;
 public class VehicleDAO implements IVehicleDAO {
 
   private Connection createConnection() throws SQLException {
-    System.out.println("connecting");
-    final String username = "alexander";
-    final String password = "Sf49ers49";
+    //Important try/catch to get the driver to work
     try {
       Class.forName("org.mariadb.jdbc.Driver");
     } catch (ClassNotFoundException e) {
       e.printStackTrace();
     }
-    return DriverManager.getConnection("jdbc:mariadb://130.225.170.83:3306/testbrs?user=alexander&password=Sf49ers49");
-    //static final String db_url = "jdbc:mariadb://130.225.170.83:3306/
-    //return DriverManager.getConnection("jdbc:mariadb://130.225.170.83:3306/testbrs", username, password);
+    //return DriverManager.getConnection("jdbc:mariadb://130.225.170.83:3306/testbrs?user=limitedUser&password=mypassword123");
+    return DriverManager.getConnection("jdbc:mariadb://localhost:3306/testbrs?user=limitedUser&password=mypassword123");
   }
 
   @Override
@@ -53,12 +50,7 @@ public class VehicleDAO implements IVehicleDAO {
     IVehicleDTO vehicle = new VehicleDTO();
 
     try (Connection c = createConnection()){
-     // ResultSet rs;
-     // String query = "SELECT * FROM vehicles WHERE vehicles_id = ?";
-     // PreparedStatement vehicleQuery = c.prepareStatement(query);
-     // vehicleQuery.setInt(1, vehicleId);
-     // rs = vehicleQuery.executeQuery();
-     // rs.next();
+     
       Statement st = c.createStatement();
       ResultSet rs = st.executeQuery("SELECT * FROM vehicles WHERE license = " + vehicleId);
       rs.next();

@@ -23,9 +23,6 @@ public class VehicleRestService {
     public Response vehicleInfo(@PathParam("vehicleNum") int id) throws IVehicleDAO.DALException {
 
        vehicleDTO = vehicleDAO.getVehicle(id);
-        System.out.println(vehicleDTO.getVehiclePurpose());
-        System.out.println(vehicleDTO.getVehicleId());
-        System.out.println(vehicleDTO.getLicense());
        String str = gson.toJson(vehicleDTO);
         System.out.println(str);
         return Response.status(200).entity("values: " + str).build();

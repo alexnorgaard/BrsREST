@@ -8,12 +8,15 @@ import java.util.LinkedList;
 
 public class PeopleDAO implements IPeopleDAO {
   private Connection createConnection() throws SQLException {
+
+   //Important try/catch to get the driver to work
     try {
       Class.forName("org.mariadb.jdbc.Driver");
     } catch (ClassNotFoundException e) {
       e.printStackTrace();
     }
-    return DriverManager.getConnection("jdbc:mariadb://130.225.170.83:3306/testbrs?user=alexander&password=Sf49ers49");
+    //return DriverManager.getConnection("jdbc:mariadb://130.225.170.83:3306/testbrs?user=limitedUser&password=mypassword123");
+    return DriverManager.getConnection("jdbc:mariadb://localhost:3306/testbrs?user=limitedUser&password=mypassword123");
   }
 
 
