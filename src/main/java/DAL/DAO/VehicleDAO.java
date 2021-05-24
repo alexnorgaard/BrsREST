@@ -22,14 +22,14 @@ public class VehicleDAO implements IVehicleDAO {
   @Override
   public void createVehicle(IVehicleDTO vehicle) throws DALException {
     try (Connection c = createConnection()){
-      Statement statement = c.createStatement();
-      ResultSet rs = statement.executeQuery("SELECT * FROM vehicles WHERE vehicles_id = " + vehicle.getVehicleId());
-      LinkedList<Integer> uid = new LinkedList<>();
-      boolean idUsed = false;
+     // Statement statement = c.createStatement();
+      //ResultSet rs = statement.executeQuery("SELECT * FROM vehicles WHERE vehicles_id = " + vehicle.getVehicleId());
+      //LinkedList<Integer> uid = new LinkedList<>();
+      //boolean idUsed = false;
 
-      if(rs.next()){
-        throw  new DALException("ID already in use");
-      }
+      //if(rs.next()){
+       // throw  new DALException("ID already in use");
+      //}
 
       PreparedStatement prepState = c.prepareStatement("INSERT INTO vehicles VALUES (?,?,?,?,?)");
 

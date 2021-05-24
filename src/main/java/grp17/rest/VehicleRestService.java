@@ -7,9 +7,7 @@ import DAL.IVehicleDTO;
 import DAL.VehicleDTO;
 import com.google.gson.Gson;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
+import javax.ws.rs.*;
 import javax.ws.rs.core.Response;
 
 @Path("/vehicles")
@@ -17,6 +15,15 @@ public class VehicleRestService {
     IVehicleDAO vehicleDAO = new VehicleDAO();
     IVehicleDTO vehicleDTO;
     Gson gson = new Gson();
+
+    @POST
+    @Path("/new")
+    @Consumes("application/json")
+    public Response newVehicle(VehicleDTO vehicleDTO){
+        String output = vehicleDTO.toString();
+        return Response.status(200).entity(output).build();
+
+    }
 
     @GET // This annotation indicates GET request
     @Path("/{vehicleNum}") //Show data on chosen vehicle
