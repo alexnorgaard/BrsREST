@@ -1,9 +1,6 @@
 package grp17.app;
 
-import grp17.rest.ContainerRestService;
-import grp17.rest.HelloRestService;
-import grp17.rest.PeopleRestService;
-import grp17.rest.VehicleRestService;
+import grp17.rest.*;
 
 import javax.ws.rs.core.Application;
 import java.util.HashSet;
@@ -17,6 +14,7 @@ public class BrsApplication extends Application {
         singletons.add(new VehicleRestService());
         singletons.add(new PeopleRestService());
         singletons.add(new ContainerRestService());
+        singletons.add(new PutVehicleRestService());
     }
     @Override
     public Set<Object> getSingletons() {

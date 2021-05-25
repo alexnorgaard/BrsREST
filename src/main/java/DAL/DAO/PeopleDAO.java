@@ -15,8 +15,8 @@ public class PeopleDAO implements IPeopleDAO {
     } catch (ClassNotFoundException e) {
       e.printStackTrace();
     }
-    //return DriverManager.getConnection("jdbc:mariadb://130.225.170.83:3306/testbrs?user=limitedUser&password=mypassword123");
-    return DriverManager.getConnection("jdbc:mariadb://localhost:3306/testbrs?user=limitedUser&password=mypassword123");
+    return DriverManager.getConnection("jdbc:mariadb://130.225.170.83:3306/testbrs?user=limitedUser&password=mypassword123");
+    //return DriverManager.getConnection("jdbc:mariadb://localhost:3306/testbrs?user=limitedUser&password=mypassword123");
   }
 
 
@@ -46,6 +46,7 @@ public class PeopleDAO implements IPeopleDAO {
       prepState.executeUpdate();
 
     } catch (SQLException e) {
+      System.out.println(e);
       throw new DALException(e.getMessage());
     }
 
