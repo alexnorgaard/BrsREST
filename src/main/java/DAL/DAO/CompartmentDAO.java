@@ -24,7 +24,7 @@ public class CompartmentDAO implements ICompartmentDAO {
         throw  new DALException("ID already in use");
       }
 
-      PreparedStatement prepState = c.prepareStatement("INSERT INTO vehicle_control VALUES (?,?,?,?)");
+      PreparedStatement prepState = c.prepareStatement("INSERT INTO compartments (compartments_id, compartment_name, vehicles_vehicles_id, containers_containers_id) VALUES (?,?,?,?)");
 
 
       prepState.setInt(1,compartment.getCompartmentId());

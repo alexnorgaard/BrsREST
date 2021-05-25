@@ -22,22 +22,21 @@ public class VehicleDAO implements IVehicleDAO {
   @Override
   public void createVehicle(IVehicleDTO vehicle) throws DALException {
     try (Connection c = createConnection()){
-     // Statement statement = c.createStatement();
+      // Statement statement = c.createStatement();
       //ResultSet rs = statement.executeQuery("SELECT * FROM vehicles WHERE vehicles_id = " + vehicle.getVehicleId());
       //LinkedList<Integer> uid = new LinkedList<>();
       //boolean idUsed = false;
 
       //if(rs.next()){
-       // throw  new DALException("ID already in use");
+      // throw  new DALException("ID already in use");
       //}
 
-      PreparedStatement prepState = c.prepareStatement("INSERT INTO vehicles VALUES (?,?,?,?,?)");
+      PreparedStatement prepState = c.prepareStatement("INSERT INTO vehicles (license, vehicle_type, vehicle_purpose, unit_responsible) VALUES (?,?,?,?)");
 
-      prepState.setInt(1,vehicle.getVehicleId());
-      prepState.setInt(2,vehicle.getLicense());
-      prepState.setString(3,vehicle.getVehicleType());
-      prepState.setString(4,vehicle.getVehiclePurpose());
-      prepState.setString(5,vehicle.getUnitResponsible());
+      prepState.setInt(1,vehicle.getLicense());
+      prepState.setString(2,vehicle.getVehicleType());
+      prepState.setString(3,vehicle.getVehiclePurpose());
+      prepState.setString(4,vehicle.getUnitResponsible());
       prepState.executeUpdate();
 
     } catch (SQLException e) {

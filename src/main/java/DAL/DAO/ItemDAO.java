@@ -15,22 +15,21 @@ public class ItemDAO implements IItemDAO{
   @Override
   public void createItem(IItemDTO item) throws DALException {
     try (Connection c = createConnection()){
-      Statement statement = c.createStatement();
-      ResultSet rs = statement.executeQuery("SELECT * FROM items WHERE items_id = " + item.getItemId());
-      LinkedList<Integer> uid = new LinkedList<>();
-      boolean idUsed = false;
+      //Statement statement = c.createStatement();
+      //ResultSet rs = statement.executeQuery("SELECT * FROM items WHERE items_id = " + item.getItemId());
+      //LinkedList<Integer> uid = new LinkedList<>();
+      //boolean idUsed = false;
 
-      if(rs.next()){
-        throw  new DALException("ID already in use");
-      }
+      //if(rs.next()){
+      //  throw  new DALException("ID already in use");
+      //}
 
-      PreparedStatement prepState = c.prepareStatement("INSERT INTO items VALUES (?,?,?,?)");
+      PreparedStatement prepState = c.prepareStatement("INSERT INTO items (item_number, item_name, item_type) VALUES (?,?,?)");
 
 
-      prepState.setInt(1,item.getItemId());
-      prepState.setInt(2,item.getItemNumber());
-      prepState.setString(3,item.getItemName());
-      prepState.setString(4,item.getItemType());
+      prepState.setInt(1,item.getItemNumber());
+      prepState.setString(2,item.getItemName());
+      prepState.setString(3,item.getItemType());
       prepState.executeUpdate();
 
     } catch (SQLException e) {

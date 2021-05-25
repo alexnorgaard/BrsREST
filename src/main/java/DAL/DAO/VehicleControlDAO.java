@@ -15,21 +15,20 @@ public class VehicleControlDAO implements IVehicleControlDAO {
   @Override
   public void createVehicleControl(IVehicleControlDTO vehicleControl) throws DALException {
     try (Connection c = createConnection()){
-      Statement statement = c.createStatement();
-      ResultSet rs = statement.executeQuery("SELECT * FROM vehicle_control WHERE vehicle_control_id = " + vehicleControl.getVehicleControlId());
-      LinkedList<Integer> uid = new LinkedList<>();
-      boolean idUsed = false;
+      //Statement statement = c.createStatement();
+      //ResultSet rs = statement.executeQuery("SELECT * FROM vehicle_control WHERE vehicle_control_id = " + vehicleControl.getVehicleControlId());
+      //LinkedList<Integer> uid = new LinkedList<>();
+      //boolean idUsed = false;
 
-      if(rs.next()){
-        throw  new DALException("ID already in use");
-      }
+      //if(rs.next()){
+      //  throw  new DALException("ID already in use");
+      //}
 
-      PreparedStatement prepState = c.prepareStatement("INSERT INTO vehicle_control VALUES (?,?,?)");
+      PreparedStatement prepState = c.prepareStatement("INSERT INTO vehicle_control (people_people_id, vehicles_vehicles_id) VALUES (?,?)");
 
 
-      prepState.setInt(1,vehicleControl.getVehicleControlId());
-      prepState.setInt(2,vehicleControl.getUserId());
-      prepState.setInt(3,vehicleControl.getVehicleId());
+      prepState.setInt(1,vehicleControl.getUserId());
+      prepState.setInt(2,vehicleControl.getVehicleId());
       prepState.executeUpdate();
 
     } catch (SQLException e) {
