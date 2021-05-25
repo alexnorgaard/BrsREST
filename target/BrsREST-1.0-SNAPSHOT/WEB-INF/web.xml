@@ -20,7 +20,7 @@
             <param-value>grp17.app.BrsApplication</param-value>
         </init-param>
     </servlet>
-<!--
+
     <security-constraint>
         <web-resource-collection>
             <web-resource-name>All</web-resource-name>
@@ -36,7 +36,7 @@
     <login-config>
         <auth-method>BASIC</auth-method>
     </login-config>
--->
+
     <servlet-mapping>
         <servlet-name>resteasy-servlet</servlet-name>
         <!--Prefix for endpoint-->

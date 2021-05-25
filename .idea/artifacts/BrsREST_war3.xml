@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" build-on-make="true" name="BrsREST:war3">
+    <output-path>$PROJECT_DIR$/out/artifacts/BrsREST_war3</output-path>
+    <root id="archive" name="BrsREST_war.war">
+      <element id="artifact" artifact-name="BrsREST:war exploded" />
+    </root>
+  </artifact>
+</component>
