@@ -6,9 +6,22 @@ import DAL.DAO.VehicleDAO;
 import DAL.IVehicleDTO;
 import DAL.VehicleDTO;
 import com.google.gson.Gson;
+import com.google.gson.annotations.JsonAdapter;
+
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.Response;
+
+class Vehicle{
+    @FormParam("vehicle_license")
+    private String license;
+    @FormParam("vehicle_type")
+    private String type;
+    @FormParam("vehicle_purpose")
+    private String purpose;
+    @FormParam("unit_responsible")
+    private String unit;
+}
 
 @Path("/vehicles")
 public class VehicleRestService {
@@ -19,10 +32,12 @@ public class VehicleRestService {
     @POST
     @Path("/new")
     @Consumes("application/json")
-    public Response newVehicle(VehicleDTO vehicleDTO){
-        String output = vehicleDTO.toString();
-        return Response.status(200).entity(output).build();
-
+    public Response newVehicle(VehicleDTO vehicle){
+        System.out.println("IN POST METHOD");
+        System.out.println(vehicle.toString());
+        //String output = vehicleDTO.toString();
+        //return Response.status(200).entity(output).build();
+        return Response.status(200).entity("hej").build();
     }
 
     @GET // This annotation indicates GET request

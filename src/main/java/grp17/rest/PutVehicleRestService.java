@@ -4,7 +4,7 @@ import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.core.Response;
 
-@Path("/")
+@Path("/vehicles/new")
 public class PutVehicleRestService {
     @GET
 
@@ -48,7 +48,7 @@ public class PutVehicleRestService {
                 "            }\n" +
                 "\n" +
                 "            var xmlhttp = new XMLHttpRequest();\n" +
-                "            xmlhttp.open(\"POST\", \"https://grp17.mama.sh/BrsREST_war/vehicles/new\");\n" +
+                "            xmlhttp.open(\"POST\", \"http://localhost:8081/BrsREST_war_exploded/vehicles/new\");\n" +
                 "            xmlhttp.setRequestHeader(\"Content-Type\", \"application/json\");\n" +
                 "            xmlhttp.send(JSON.stringify(data));\n" +
                 "\n" +
