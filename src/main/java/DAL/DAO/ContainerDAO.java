@@ -24,7 +24,7 @@ public class ContainerDAO implements IContainerDAO{
         throw  new DALException("ID already in use");
       }
 
-      PreparedStatement prepState = c.prepareStatement("INSERT INTO containers VALUES (?,?,?,?)");
+      PreparedStatement prepState = c.prepareStatement("INSERT INTO containers (containers_id, license, container_type, unit_responsible) VALUES (?,?,?,?)");
 
 
       prepState.setInt(1,container.getContainerId());

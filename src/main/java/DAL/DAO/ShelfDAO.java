@@ -24,7 +24,7 @@ public class ShelfDAO implements IShelfDAO {
         throw  new DALException("ID already in use");
       }
 
-      PreparedStatement prepState = c.prepareStatement("INSERT INTO shelves VALUES (?,?,?,?,?)");
+      PreparedStatement prepState = c.prepareStatement("INSERT INTO shelves (shelves_id, shelf_name_col, compartments_compartments_id, vehicles_vehicles_id, containers_containers_id) VALUES (?,?,?,?,?)");
 
 
       prepState.setInt(1,shelf.getShelfId());

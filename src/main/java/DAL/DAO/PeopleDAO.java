@@ -24,25 +24,24 @@ public class PeopleDAO implements IPeopleDAO {
   public void createUser(IPersonDTO person) throws DALException {
 
     try (Connection c = createConnection()){
-      Statement statement = c.createStatement();
-      ResultSet rs = statement.executeQuery("SELECT * FROM people WHERE people_id = " + person.getUserId());
-      LinkedList<Integer> uid = new LinkedList<>();
-      boolean idUsed = false;
+      //Statement statement = c.createStatement();
+      //ResultSet rs = statement.executeQuery("SELECT * FROM people WHERE people_id = " + person.getUserId());
+      //LinkedList<Integer> uid = new LinkedList<>();
+      //boolean idUsed = false;
 
-      if(rs.next()){
-        throw  new DALException("ID already in use");
-      }
+      //if(rs.next()){
+      //  throw  new DALException("ID already in use");
+      //}
 
-      PreparedStatement prepState = c.prepareStatement("INSERT INTO people VALUES (?,?,?,?,?,?,?)");
+      PreparedStatement prepState = c.prepareStatement("INSERT INTO people (MA_number, name_first, name_last, rank, phone, email) VALUES (?,?,?,?,?,?)");
 
 
-      prepState.setInt(1,person.getUserId());
-      prepState.setInt(2,person.getMANum());
-      prepState.setString(3,person.getFirstName());
-      prepState.setString(4,person.getLastName());
-      prepState.setString(5,person.getRank());
-      prepState.setInt(6,person.getPhoneNum());
-      prepState.setString(7,person.getEmail());
+      prepState.setInt(1,person.getMANum());
+      prepState.setString(2,person.getFirstName());
+      prepState.setString(3,person.getLastName());
+      prepState.setString(4,person.getRank());
+      prepState.setInt(5,person.getPhoneNum());
+      prepState.setString(6,person.getEmail());
       prepState.executeUpdate();
 
     } catch (SQLException e) {
